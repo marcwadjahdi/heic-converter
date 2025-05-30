@@ -1,0 +1,9 @@
+github.com/MaestroError/go-libheif v0.3.0 h1:204PWXPzbxMAWHzQsnRpS8X99SMxRLlXapgQCeMlCMA=
+github.com/MaestroError/go-libheif v0.3.0/go.mod h1:Tm3itYEAZS4K41yP81EudQXZsPaN8Ij85wMXRBkHKhI=
+github.com/TheTitanrain/w32 v0.0.0-20180517000239-4f5cfb03fabf/go.mod h1:peYoMncQljjNS6tZwI9WVyQB3qZS6u79/N3mBOcnd3I=
+github.com/TheTitanrain/w32 v0.0.0-20200114052255-2654d97dbd3d h1:2xp1BQbqcDDaikHnASWpVZRjibOxu7y9LhAv04whugI=
+github.com/TheTitanrain/w32 v0.0.0-20200114052255-2654d97dbd3d/go.mod h1:peYoMncQljjNS6tZwI9WVyQB3qZS6u79/N3mBOcnd3I=
+github.com/sqweek/dialog v0.0.0-20240226140203-065105509627 h1:2JL2wmHXWIAxDofCK+AdkFi1KEg3dgkefCsm7isADzQ=
+github.com/sqweek/dialog v0.0.0-20240226140203-065105509627/go.mod h1:/qNPSY91qTz/8TgHEMioAUc6q7+3SOybeKczHMXFcXw=
+github.com/strukturag/libheif v1.19.8 h1:blmLIu25pDs3N86Br6uE1Dg46Grz6m+hLh2CnQjX/8k=
+github.com/strukturag/libheif v1.19.8/go.mod h1:E/PNRlmVtrtj9j2AvBZlrO4dsBDu6KfwDZn7X1Ce8Ks=
