@@ -42,6 +42,15 @@ The `build-libheif-win.sh` script will:
 
 The script builds a minimal version of libheif without optional dependencies (like JPEG, PNG, etc.) to keep the DLL size small and dependencies minimal.
 
+#### Dependencies
+
+To set up the dependencies, clone the necessary repository into the `dependencies` directory:
+
+```bash
+git clone https://github.com/strukturag/libheif.git  dependencies/
+git clone https://github.com/microsoft/vcpkg.git dependencies/
+```
+
 ### Building from Source
 
 1. Clone the repository:
