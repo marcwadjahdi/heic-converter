@@ -20,16 +20,27 @@ A simple command-line tool to convert HEIC images to JPG format. This tool provi
 
 ### Prerequisites
 
+#### Linux (Ubuntu/Debian)
 ```bash
-# Ubuntu/Debian
 sudo apt-get install libheif-dev libgtk-3-dev
-
-# Fedora
-sudo dnf install libheif-devel gtk3-devel
-
-# Arch Linux
-sudo pacman -S libheif gtk3
 ```
+
+#### Windows (Cross-compilation from Linux)
+```bash
+# Install required packages
+sudo apt-get install -y build-essential cmake pkg-config mingw-w64-x86-64-dev libheif-dev golang-go
+
+# Install libheif for Windows
+./scripts/build-libheif-win.sh
+```
+
+The `build-libheif-win.sh` script will:
+1. Install MinGW development tools
+2. Build libheif for Windows
+3. Install the DLL and import library in the MinGW system directory
+4. Create necessary import libraries for linking
+
+The script builds a minimal version of libheif without optional dependencies (like JPEG, PNG, etc.) to keep the DLL size small and dependencies minimal.
 
 ### Building from Source
 
@@ -41,14 +52,22 @@ cd heic-converter
 
 2. Build the project:
 ```bash
-./build.sh 0.1.0
+# For Linux
+./scripts/build.sh 0.1.0 linux
+
+# For Windows
+./scripts/build.sh 0.1.0 windows
 ```
 
-The executable will be created in the `build` directory.
+The executables will be created in the `build` directory:
+- Linux: `build/heic-converter-0.1.0`
+- Windows: `build/heic-converter-0.1.0-windows/` (includes required DLL)
 
 ## Usage
 
 Run the executable and use the graphical dialog to select a HEIC file or folder containing HEIC files. The tool will automatically convert all selected files to JPG format.
+
+For Windows users: Make sure to keep the `libheif.dll` file in the same directory as the executable.
 
 ## License
 

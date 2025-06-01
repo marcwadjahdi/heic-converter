@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Get the project root directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
+
 # Set the output directory
 OUTPUT_DIR="build"
 
@@ -10,11 +15,15 @@ if [ -z "$1" ]; then
 fi
 
 VERSION="$1"
-OUTPUT="$OUTPUT_DIR/heic-to-jpg-$VERSION.exe"
+OUTPUT="$OUTPUT_DIR/heic-converter-$VERSION"
 SOURCE="main.go"
 
+# Set GOOS and GOARCH for Linux
+GOOS="linux"
+GOARCH="amd64"
+
 # Create the build directory if it doesn't exist
-mkdir -p $OUTPUT_DIR
+mkdir -p "$OUTPUT_DIR"
 
 # Ensure we have the latest dependencies
 echo "Updating dependencies..."
@@ -27,19 +36,17 @@ if ! pkg-config --exists libheif; then
     exit 1
 fi
 
-# Check if the output file exists and if the source file is newer
-if [ ! -f $OUTPUT ] || [ $SOURCE -nt $OUTPUT ]; then
+# Build the executable
+if [ ! -f "$OUTPUT" ] || [ "$SOURCE" -nt "$OUTPUT" ]; then
     echo "Building the executable..."
-    CGO_ENABLED=1 go build -x -o $OUTPUT $SOURCE
+    CGO_ENABLED=1 GOOS=$GOOS GOARCH=$GOARCH go build -x -o "$OUTPUT" "$SOURCE"
 
     # Check if the build was successful
     if [ $? -eq 0 ]; then
         echo "Build successful: $OUTPUT created."
-        chmod +x $OUTPUT
+        chmod +x "$OUTPUT"
     else
         echo "Build failed. Please check the error messages above."
-        echo "Make sure you have all required dependencies installed:"
-        echo "sudo apt-get install libheif-dev"
         exit 1
     fi
 else
