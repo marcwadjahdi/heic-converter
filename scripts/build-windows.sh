@@ -32,9 +32,9 @@ fi
 # Call the build-libheif script to ensure libheif is set up
 if [ -f "$SCRIPT_DIR/build-libheif.sh" ]; then
     echo "Setting up libheif..."
-    "$SCRIPT_DIR/build-libheif.sh"
+    "$SCRIPT_DIR/build-libheif-win.sh"
 else
-    echo "Error: build-libheif.sh not found."
+    echo "Error: build-libheif-win.sh not found."
     exit 1
 fi
 
